@@ -1,5 +1,3 @@
-@import url('https://fonts.cdnfonts.com/css/satoshi');
-
 body {
     margin: 0;
     font-family: 'Satoshi', sans-serif;
@@ -13,27 +11,65 @@ body {
 
 .keyboard-container {
     display: grid;
-    grid-template-columns: repeat(10, 60px);
-    grid-template-rows: repeat(5, 60px);
-    gap: 10px;
+    grid-template-columns: repeat(14, 50px);
+    grid-template-rows: repeat(5, 50px);
+    grid-gap: 8px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ddd;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .key {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    font-size: 18px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    height: 50px;
+    box-shadow: inset 0px -3px 0px #bbb;
+    border: 1px solid #ccc;
 }
 
 .key:active {
-    background-color: #b0b0b0;
+    background-color: #e0e0e0;
+    box-shadow: inset 0px 3px 0px #bbb;
+}
+
+.key.special {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+.key.spacebar {
+    grid-column: span 6;
+}
+
+.key.backspace, .key.enter, .key.shift {
+    grid-column: span 2;
+}
+
+.key.tab {
+    grid-column: span 1.5;
+}
+
+.key.capslock {
+    grid-column: span 2;
+}
+
+.key.backslash {
+    grid-column: span 1.5;
+}
+
+.key.ctrl, .key.alt, .key.fn {
+    grid-column: span 1.5;
+}
+
+.key:active {
+    background-color: #d0d0d0;
+    box-shadow: inset 0px 3px 0px #aaa;
 }
