@@ -3,12 +3,18 @@ document.addEventListener('keydown', function(event) {
     const keyElements = document.querySelectorAll('.key');
 
     keyElements.forEach(element => {
-        const keyContent = element.textContent.trim().toUpperCase();
+        let keyContent = element.textContent.trim().toUpperCase();
+
+        
+        if (keyContent === 'ESC' && event.key.toLowerCase() === 'escape') {
+            element.classList.add('active');
+        }
 
         if (keyContent === key || (keyContent === 'SPACE' && event.key === ' ')) {
             element.classList.add('active');
         }
 
+        
         if (keyContent === 'CTRL' && event.key.toLowerCase() === 'control') {
             element.classList.add('active');
         }
