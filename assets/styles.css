@@ -92,3 +92,8 @@ body {
 .key.special.alt:last-child {
     grid-column: span 2;
 }
+
+.key.active {
+    background-color: #90ee90;
+    box-shadow: inset 0px 3px 0px #6fb86f;
+}
