@@ -7,17 +7,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .keyboard-container {
     display: grid;
-    grid-template-columns: repeat(14, 50px);
-    grid-template-rows: repeat(5, 50px);
-    grid-gap: 8px;
+    grid-template-columns: repeat(15, 1fr);
+    grid-gap: 5px;
     padding: 20px;
     background-color: #ddd;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    max-width: 800px; /* Ensures it doesn't clip into the corners */
+    margin: 0 auto; /* Centers the keyboard */
 }
 
 .key {
@@ -46,27 +48,35 @@ body {
 }
 
 .key.spacebar {
-    grid-column: span 6;
+    grid-column: span 7;
 }
 
-.key.backspace, .key.enter, .key.shift {
+.key.backspace {
     grid-column: span 2;
 }
 
 .key.tab {
-    grid-column: span 1.5;
+    grid-column: span 2;
 }
 
 .key.capslock {
     grid-column: span 2;
 }
 
-.key.backslash {
-    grid-column: span 1.5;
+.key.enter {
+    grid-column: span 2;
+}
+
+.key.shift {
+    grid-column: span 2.5;
 }
 
 .key.ctrl, .key.alt, .key.fn {
     grid-column: span 1.5;
+}
+
+.key.backslash {
+    grid-column: span 2;
 }
 
 .key:active {
