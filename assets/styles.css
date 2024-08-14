@@ -18,8 +18,8 @@ body {
     background-color: #ddd;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    max-width: 800px; /* Ensures it doesn't clip into the corners */
-    margin: 0 auto; /* Centers the keyboard */
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .key {
@@ -37,18 +37,13 @@ body {
     border: 1px solid #ccc;
 }
 
-.key:active {
-    background-color: #e0e0e0;
-    box-shadow: inset 0px 3px 0px #bbb;
-}
-
 .key.special {
     background-color: #e5e5e5;
     color: #333;
 }
 
 .key.spacebar {
-    grid-column: span 7;
+    grid-column: span 9;
 }
 
 .key.backspace {
@@ -63,23 +58,37 @@ body {
     grid-column: span 2;
 }
 
-.key.enter {
+.key.enter-top {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.key.enter-bottom {
     grid-column: span 2;
+    grid-row: span 1;
 }
 
 .key.shift {
-    grid-column: span 2.5;
+    grid-column: span 2;
 }
 
-.key.ctrl, .key.alt, .key.fn {
-    grid-column: span 1.5;
+.key.right-shift {
+    grid-column: span 3;
 }
 
-.key.backslash {
+.key.ctrl, .key.alt {
     grid-column: span 2;
 }
 
 .key:active {
     background-color: #d0d0d0;
     box-shadow: inset 0px 3px 0px #aaa;
+}
+
+.key.spacebar {
+    grid-column: 5 / span 9;
+}
+
+.key.special.alt:last-child {
+    grid-column: span 2;
 }
