@@ -1,84 +1,83 @@
 const pressedKeys = new Set();
-const keyElements = document.querySelectorAll('.key');
-const totalKeys = 54;
+const totalKeys = 54;  
+const keyboardContainer = document.querySelector('.keyboard-container');
+let confettiActive = false;
+let keyboardMovedDown = false;
 
 document.addEventListener('keydown', function(event) {
     const key = event.key.toUpperCase();
+    const keyElements = document.querySelectorAll('.key');
 
     keyElements.forEach(element => {
         let keyContent = element.textContent.trim().toUpperCase();
 
-        if (keyContent === 'ESC' && event.key === 'Escape') {
-            element.classList.add('active');
-            pressedKeys.add('ESC');
-            console.log('ESC pressed');
-        }
+        
+        if (keyboardMovedDown === false) {
+            if (keyContent === 'ESC' && event.key === 'Escape') {
+                element.classList.add('active');
+                pressedKeys.add('ESC');
+            }
 
-        if (keyContent === key || (keyContent === 'SPACE' && event.key === ' ')) {
-            element.classList.add('active');
-            pressedKeys.add(keyContent);
-            console.log(keyContent + ' pressed');
-        }
+            if (keyContent === key || (keyContent === 'SPACE' && event.key === ' ')) {
+                element.classList.add('active');
+                pressedKeys.add(keyContent);
+            }
 
-        if (keyContent === 'CTRL' && event.key.toLowerCase() === 'control') {
-            element.classList.add('active');
-            pressedKeys.add('CTRL');
-            console.log('CTRL pressed');
-        }
-        if (keyContent === 'SHIFT' && event.key.toLowerCase() === 'shift') {
-            element.classList.add('active');
-            pressedKeys.add('SHIFT');
-            console.log('SHIFT pressed');
-        }
-        if (keyContent === 'ALT' && event.key.toLowerCase() === 'alt') {
-            element.classList.add('active');
-            pressedKeys.add('ALT');
-            console.log('ALT pressed');
-        }
-        if (keyContent === 'TAB' && event.key.toLowerCase() === 'tab') {
-            element.classList.add('active');
-            pressedKeys.add('TAB');
-            console.log('TAB pressed');
-        }
-        if (keyContent === 'CAPS LOCK' && event.key.toLowerCase() === 'capslock') {
-            element.classList.add('active');
-            pressedKeys.add('CAPS LOCK');
-            console.log('CAPS LOCK pressed');
-        }
-        if (keyContent === 'ENTER' && event.key.toLowerCase() === 'enter') {
-            element.classList.add('active');
-            pressedKeys.add('ENTER');
-            console.log('ENTER pressed');
-        }
-        if (keyContent === 'BACKSPACE' && event.key.toLowerCase() === 'backspace') {
-            element.classList.add('active');
-            pressedKeys.add('BACKSPACE');
-            console.log('BACKSPACE pressed');
-        }
+            if (keyContent === 'CTRL' && event.key.toLowerCase() === 'control') {
+                element.classList.add('active');
+                pressedKeys.add('CTRL');
+            }
+            if (keyContent === 'SHIFT' && event.key.toLowerCase() === 'shift') {
+                element.classList.add('active');
+                pressedKeys.add('SHIFT');
+            }
+            if (keyContent === 'ALT' && event.key.toLowerCase() === 'alt') {
+                element.classList.add('active');
+                pressedKeys.add('ALT');
+            }
+            if (keyContent === 'TAB' && event.key.toLowerCase() === 'tab') {
+                element.classList.add('active');
+                pressedKeys.add('TAB');
+            }
+            if (keyContent === 'CAPS LOCK' && event.key.toLowerCase() === 'capslock') {
+                element.classList.add('active');
+                pressedKeys.add('CAPS LOCK');
+            }
+            if (keyContent === 'ENTER' && event.key.toLowerCase() === 'enter') {
+                element.classList.add('active');
+                pressedKeys.add('ENTER');
+            }
+            if (keyContent === 'BACKSPACE' && event.key.toLowerCase() === 'backspace') {
+                element.classList.add('active');
+                pressedKeys.add('BACKSPACE');
+            }
 
-        if (!pressedKeys.has(keyContent) && keyContent) {
-            console.log(`Key not added: ${keyContent}`);
+            console.log(`Pressed keys: ${pressedKeys.size} out of ${totalKeys}`);
+
+            if (pressedKeys.size === totalKeys && !confettiActive) {
+                console.log('All keys pressed! Launching confetti...');
+                confettiActive = true;
+                launchConfetti();
+                setTimeout(() => {
+                    stopConfetti();
+                    moveKeyboardToBottom();
+                }, 5000); 
+            }
         }
     });
-
-    console.log(`Pressed keys: ${pressedKeys.size} out of ${totalKeys}`);
-
-    if (pressedKeys.size === totalKeys) {
-        console.log('All keys pressed! Launching confetti...');
-        launchConfetti();
-    }
 });
 
 function launchConfetti() {
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    let interval;
 
     function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
     }
 
-    const interval = setInterval(function() {
+    interval = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -99,4 +98,37 @@ function launchConfetti() {
             })
         );
     }, 250);
+}
+
+function stopConfetti() {
+    confetti.reset();
+}
+
+function moveKeyboardToBottom() {
+    keyboardContainer.classList.add('move-to-bottom');
+    keyboardMovedDown = true;
+    setTimeout(clearKeyboardState, 1000); 
+}
+
+function clearKeyboardState() {
+    const keyElements = document.querySelectorAll('.key');
+    keyElements.forEach(element => {
+        element.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', handleKeyPressAfterMove);
+}
+
+function handleKeyPressAfterMove(event) {
+    const keyElements = document.querySelectorAll('.key');
+
+    keyElements.forEach(element => {
+        const keyContent = element.textContent.trim().toUpperCase();
+        if (keyContent === event.key.toUpperCase() || (keyContent === 'SPACE' && event.key === ' ')) {
+            element.classList.add('active');
+            setTimeout(() => {
+                element.classList.remove('active');
+            }, 100); 
+        }
+    });
 }
