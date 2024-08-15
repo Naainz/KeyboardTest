@@ -1,4 +1,34 @@
-const words = ["apple", "orange", "banana", "grape", "pear", "peach", "plum", "berry", "melon", "kiwi"]; 
+const words = [
+    // fruit
+    "apple", "orange", "banana", "grape", "pear", "peach", "plum", "berry", "melon", "kiwi", "mango", "pineapple", "strawberry", "blueberry", "raspberry", "blackberry", "watermelon", "cantaloupe", "pomegranate",
+
+    // animal
+    "dog", "cat", "elephant", "giraffe", "lion", "tiger", "bear", "zebra", "kangaroo", "panda", "monkey", "rabbit", "deer", "horse", "dolphin", "whale", "shark", "penguin", "eagle", "falcon",
+
+    // object
+    "table", "chair", "lamp", "sofa", "carpet", "mirror", "window", "door", "bottle", "cup", "spoon", "fork", "knife", "book", "pen", "pencil", "notebook", "backpack", "clock", "phone", "computer", "television", "keyboard", "mouse", "speaker", "headphones", "camera", "printer", "monitor", "router",
+
+    // places
+    "city", "village", "mountain", "river", "ocean", "desert", "forest", "island", "beach", "park", "museum", "library", "restaurant", "cafe", "hotel", "school", "university", "hospital", "airport", "station",
+
+    // adjective
+    "quick", "slow", "happy", "sad", "bright", "dark", "light", "heavy", "soft", "hard", "sharp", "blunt", "warm", "cold", "hot", "cool", "wet", "dry", "smooth", "rough", "clean", "dirty", "strong", "weak", "new", "old", "young", "ancient", "modern", "fancy", "plain", "beautiful", "ugly",
+
+    // verb
+    "run", "walk", "jump", "sit", "stand", "read", "write", "draw", "paint", "sing", "dance", "swim", "fly", "drive", "ride", "climb", "play", "watch", "listen", "speak", "talk", "whisper", "shout", "eat", "drink", "cook", "bake", "clean", "wash", "build", "create",
+
+    // colors
+    "red", "blue", "green", "yellow", "orange", "purple", "pink", "black", "white", "gray", "brown", "cyan", "magenta", "violet", "indigo", "turquoise", "silver", "gold", "bronze", "ivory",
+
+    // emotions
+    "happy", "sad", "angry", "excited", "nervous", "calm", "scared", "brave", "proud", "ashamed", "jealous", "grateful", "hopeful", "fearful", "lonely", "surprised", "shocked", "relieved", "embarrassed", "confused",
+
+    // weather
+    "sunny", "cloudy", "rainy", "stormy", "snowy", "windy", "foggy", "misty", "hot", "cold", "warm", "cool", "humid", "dry", "freezing", "thunder", "lightning", "hail", "breeze", "gale",
+
+    // nouns
+    "friend", "family", "house", "car", "bicycle", "train", "airplane", "ship", "bus", "truck", "helmet", "glasses", "wallet", "purse", "ticket", "passport", "key", "lock", "ring", "bracelet", "necklace", "hat", "shoe", "sock", "glove", "belt", "scarf", "umbrella", "coat", "jacket", "shirt", "pants", "dress", "skirt", "suit", "tie", "boots", "sneakers"
+];
 let phrase = '';
 let currentLetterIndex = 0;
 let typedWords = 0;
