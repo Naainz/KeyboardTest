@@ -127,6 +127,7 @@ body {
     letter-spacing: 2px;
     overflow: hidden;
     white-space: nowrap;
+    width: 440px; 
 }
 
 .letter {
