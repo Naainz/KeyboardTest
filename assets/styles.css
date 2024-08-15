@@ -116,6 +116,26 @@ body {
     color: #333;
 }
 
+.wpm-display-container {
+    opacity: 0;
+    font-size: 48px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s ease-in-out;
+}
+
+.wpm-number {
+    font-weight: bold;
+    font-size: 72px;
+}
+
+.wpm-text {
+    font-size: 36px;
+}
+
 .hidden {
     display: none;
 }
@@ -173,8 +193,41 @@ body {
     pointer-events: none; 
 }
 
-
 .fade-out {
     opacity: 0;
     transition: opacity 1s ease-out;
+}
+
+.wpm-card {
+    opacity: 0;
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 0;
+    background-color: #333;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: height 0.5s ease-out, top 0.5s ease-out;
+}
+
+.line-left {
+    left: calc(50% - 50px);
+}
+
+.line-right {
+    left: calc(50% + 50px);
 }

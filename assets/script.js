@@ -132,3 +132,48 @@ function handleKeyPressAfterMove(event) {
         }
     });
 }
+
+function endTest() {
+    const wpmTest = document.getElementById('wpm-test');
+    const countdown = document.getElementById('countdown');
+    const wpmCard = document.createElement('div');
+    const lineLeft = document.createElement('div');
+    const lineRight = document.createElement('div');
+
+    wpmCard.classList.add('wpm-card');
+    wpmCard.id = 'wpm-card';
+    wpmCard.textContent = `WPM: ${calculateWPM()}`; 
+    document.body.appendChild(wpmCard);
+
+    lineLeft.classList.add('vertical-line', 'line-left');
+    lineRight.classList.add('vertical-line', 'line-right');
+    document.body.appendChild(lineLeft);
+    document.body.appendChild(lineRight);
+
+    
+    wpmTest.classList.add('fade-out');
+    countdown.classList.add('fade-out');
+
+    
+    setTimeout(() => {
+        wpmTest.style.display = 'none';
+        countdown.style.display = 'none';
+
+        
+        lineLeft.style.height = '150px';
+        lineLeft.style.top = '150px';
+        lineRight.style.height = '150px';
+        lineRight.style.top = '150px';
+
+        
+        setTimeout(() => {
+            wpmCard.style.opacity = '1';
+            wpmCard.style.transform = 'translateY(-50px)';
+        }, 500);
+    }, 1000);
+}
+
+function calculateWPM() {
+    const timeElapsed = (Date.now() - startTime) / 1000 / 60; 
+    return Math.round(typedWords / timeElapsed);
+}

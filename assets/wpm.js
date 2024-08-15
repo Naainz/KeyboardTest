@@ -32,9 +32,6 @@ function startWPMTest() {
     countdown.textContent = timeLeft;
 
     
-    positionCountdownAboveCursor();
-
-    
     interval = setInterval(() => {
         if (testStarted) {
             const timeElapsed = Math.floor((Date.now() - startTime) / 1000);
@@ -119,7 +116,7 @@ function positionCountdownAboveCursor() {
         const wordDisplayPosition = document.getElementById('word-display').getBoundingClientRect();
 
         
-        countdown.style.left = `${cursorPosition.left + cursorPosition.width / 2}px`;
+        countdown.style.left = `${cursorPosition.left}px`;
         countdown.style.top = `${cursorPosition.top - 60}px`; 
     }
 }
@@ -146,4 +143,36 @@ function moveKeyboardToBottom() {
         clearKeyboardState();
         startWPMTest(); 
     }, 1000); 
+}
+
+function endTest() {
+    const wpmTest = document.getElementById('wpm-test');
+    const countdown = document.getElementById('countdown');
+    const wpmContainer = document.createElement('div');
+
+    wpmContainer.classList.add('wpm-display-container');
+    wpmContainer.id = 'wpm-container';
+    wpmContainer.innerHTML = `
+        <div class="wpm-number">${calculateWPM()}</div>
+        <div class="wpm-text">WPM</div>
+    `;
+    document.body.appendChild(wpmContainer);
+
+    
+    wpmTest.classList.add('fade-out');
+    countdown.classList.add('fade-out');
+
+    
+    setTimeout(() => {
+        wpmTest.style.display = 'none';
+        countdown.style.display = 'none';
+
+        
+        wpmContainer.style.opacity = '1';
+    }, 1000);
+}
+
+function calculateWPM() {
+    const timeElapsed = (Date.now() - startTime) / 1000 / 60; 
+    return Math.round(typedWords / timeElapsed);
 }
