@@ -44,17 +44,6 @@ cd KeyboardTest
 3. The timer will start when you begin typing.
 4. After 30 seconds, the test will end, and your WPM score will be displayed.
 
-## Project Structure
-
-typing-speed-test/
-│
-├── assets/
-│   ├── styles.css         # Main stylesheet for the application
-│   └── script.js          # Main JavaScript file for the application logic
-│
-├── index.html             # Main HTML file for the application
-└── README.md              # Project documentation (this file)
-
 ## Customization
 
 You can customize the typing test by modifying the array `words= [...]` in the `wpm.js` file. You can add or remove words from the list to suit your preferences.
