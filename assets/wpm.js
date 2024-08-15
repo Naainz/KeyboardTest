@@ -5,6 +5,7 @@ let typedWords = 0;
 let startTime;
 let interval;
 let testStarted = false; 
+let typedCharacters = []; 
 
 
 function generateRandomPhrase() {
@@ -25,6 +26,7 @@ function startWPMTest() {
     typedWords = 0;
     startTime = null;
     testStarted = false; 
+    typedCharacters = []; 
     updateWordDisplay();
     
     document.addEventListener('keydown', handleKeyStroke);
@@ -46,9 +48,14 @@ function updateWordDisplay() {
         letterSpan.textContent = visiblePhrase[i];
         letterSpan.classList.add('letter');
 
-        if (i + start < currentLetterIndex) {
-            letterSpan.classList.add(phrase[i + start] === visiblePhrase[i] ? 'correct-letter' : 'incorrect-letter');
-        } else if (i + start === currentLetterIndex) {
+        const globalIndex = i + start;
+
+        if (globalIndex < currentLetterIndex) {
+            
+            letterSpan.classList.add(
+                typedCharacters[globalIndex] === phrase[globalIndex] ? 'correct-letter' : 'incorrect-letter'
+            );
+        } else if (globalIndex === currentLetterIndex) {
             letterSpan.classList.add('current-letter');
         } else {
             letterSpan.classList.add('future-letter');
@@ -84,15 +91,13 @@ function handleKeyStroke(event) {
         const currentLetter = phrase[currentLetterIndex];
         console.log("Expected letter:", currentLetter); 
 
+        
+        typedCharacters[currentLetterIndex] = typedLetter;
+
         if (typedLetter === currentLetter) {
-            
-            markLetter('correct-letter');
             if (currentLetter === ' ') {
                 typedWords++;
             }
-        } else {
-            
-            markLetter('incorrect-letter');
         }
 
         currentLetterIndex++;
