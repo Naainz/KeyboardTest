@@ -104,3 +104,60 @@ body {
     background-color: #90ee90;
     box-shadow: inset 0px 3px 0px #6fb86f;
 }
+
+.wpm-test {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 24px;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+.word-display {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 36px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.letter {
+    display: inline-block;
+    width: 24px; 
+    text-align: center;
+}
+
+.current-letter {
+    color: #000;
+    border-left: 2px solid #000;
+}
+
+.future-letter {
+    color: #bbb;
+}
+
+.correct-letter {
+    color: green;
+}
+
+.incorrect-letter {
+    color: red;
+}
+
+.word-input {
+    visibility: hidden;
+}
+
+.wpm-display {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}

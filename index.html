@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+    <div id="wpm-test" class="wpm-test hidden">
+        <div id="word-display" class="word-display"></div>
+        <input type="text" id="word-input" class="word-input" placeholder="Start typing..." autofocus />
+        <div id="wpm-display" class="wpm-display">WPM: 0</div>
+    </div>    
     <div class="keyboard-container">
         <!-- num row -->
         <div class="key">Esc</div>
@@ -77,6 +82,7 @@
         <div class="key special alt">Alt</div>
     </div>
     <script src="assets/script.js"></script>
+    <script src="assets/wpm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
